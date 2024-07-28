@@ -8,6 +8,22 @@
 </center>
 
 <h3>Please fill out the form below to place an order:</h3><br />
+   <script>
+        function calculateTotal() {
+            const pricePerUnit = 5;
+            const discountThreshold = 10;
+            const discountRate = 0.1; // 10% discount
+
+            const quantity = document.getElementById("qty").value;
+            let total = quantity * pricePerUnit;
+
+            if (quantity > discountThreshold) {
+                total -= total * discountRate;
+            }
+
+            document.getElementById("total").innerText = "Total Cost: $" + total.toFixed(2);
+        }
+    </script>
 
 <form>
    <label for="fname">First Name:</label>
@@ -345,6 +361,11 @@
 
    <label for="qty">Quantity:</label>
      <input type="number" id="qty" name="qty"><br /><br />
+   
+   <button type="button" onclick="calculateTotal()">Calculate Total</button>
+    </form>
+
+    <p id="total">Total Cost: $0.00</p>
 
    <button type="submit">Submit Order</button>
 </form>
